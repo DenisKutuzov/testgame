@@ -48,7 +48,7 @@ const Auth = () => {
     <div>
       <button onClick={() => signIn('vk')}>VK</button>
       <button onClick={() => signOut()}>Выйти</button>
-      {session && session.user?.name && <div>{session.user?.name}</div>}
+      {session && <div>{JSON.stringify(session)}</div>}
       {/* {session && <div>{session.user}</div>} */}
       {payload && (
         <Image
