@@ -47,7 +47,7 @@ const Auth = () => {
       <button onClick={() => signOut()}>Выйти</button>
       {session && session.user?.name && <div>{session.user?.name}</div>}
       {/* {session && <div>{session.user}</div>} */}
-      {session && session.user?.name && (
+      {payload && (
         <Image
           src={payload && payload.avatar && payload?.avatar}
           width={500}
