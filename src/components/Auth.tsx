@@ -6,6 +6,9 @@ import { Config, Connect } from '@vkontakte/superappkit'
 import styles from './Auth.module.scss'
 import { useRouter } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
+
+import Image from 'next/image'
+
 const Auth = () => {
   const { data: session, status } = useSession()
   const router = useRouter()
@@ -44,7 +47,14 @@ const Auth = () => {
       <button onClick={() => signOut()}>Выйти</button>
       {session && session.user?.name && <div>{session.user?.name}</div>}
       {/* {session && <div>{session.user}</div>} */}
-
+      {session && session.user?.name && (
+        <Image
+          src={payload && payload.avatar && payload?.avatar}
+          width={500}
+          height={500}
+          alt="Picture of the author"
+        />
+      )}
       <button className={styles.btn} onClick={redirectAuthHandler}>
         Авторизация
       </button>
