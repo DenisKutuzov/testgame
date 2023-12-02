@@ -7,11 +7,5 @@ export const metadata: Metadata = {
 }
 
 export default function Admin() {
-  return (
-    <div>
-      <Auth />
-
-      
-    </div>
-  )
+  return <div></div>
 }

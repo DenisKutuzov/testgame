@@ -1,6 +1,6 @@
 'use client'
 
-import { signIn, useSession } from 'next-auth/react'
+import { signIn, useSession, signOut } from 'next-auth/react'
 import React from 'react'
 
 const Auth = () => {
@@ -11,7 +11,8 @@ const Auth = () => {
   return (
     <div>
       <button onClick={() => signIn('vk')}>VK</button>
-
+      <button onClick={() => signOut()}>Выйти</button>
+      {session && session.user?.name && <div>{session.user?.name}</div>}
       {/* {session && <div>{session.user}</div>} */}
     </div>
   )
