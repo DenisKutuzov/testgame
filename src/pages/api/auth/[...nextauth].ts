@@ -15,7 +15,7 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.VK_CLIENT_SECRET as string,
       async profile(profile, tokens) {
         const userInfoResponse = await fetch(
-          `https://api.vk.com/method/users.get?fields=email,photo_max,bdate,last_name,city&access_token=${tokens.access_token}&v=5.131`
+          `https://api.vk.com/method/users.get?fields=email,photo_max,bdate,last_name,city,contacts&access_token=${tokens.access_token}&v=5.131`
         )
         const userInfoData = await userInfoResponse.json()
         const userInfo = userInfoData.response[0]
