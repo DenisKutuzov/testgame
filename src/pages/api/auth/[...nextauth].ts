@@ -19,20 +19,20 @@ export const authOptions: NextAuthOptions = {
     signIn: '/',
     signOut: '/',
   },
-  session: {
-    strategy: 'jwt',
-  },
-  callbacks: {
-    async jwt({ token, user }) {
-      return { ...token, ...user }
-    },
-    async session({ session, token, user }) {
-      console.log(user)
-      session.user = token
-      session.expires = '123'
-      return session
-    },
-  },
+  // session: {
+  //   strategy: 'jwt',
+  // },
+  // callbacks: {
+  //   async jwt({ token, user }) {
+  //     return { ...token, ...user }
+  //   },
+  //   async session({ session, token, user }) {
+  //     console.log(user)
+  //     session.user = token
+  //     session.expires = '123'
+  //     return session
+  //   },
+  // },
 }
 
 export default NextAuth(authOptions)

@@ -38,8 +38,11 @@ const Auth = () => {
       screen: undefined,
     })
 
+  const jsonString = payload ? payload : '123'
+  const obj = JSON.parse(jsonString)
   // console.log(router)
-  console.log(payload)
+  console.log(obj)
+  // console.log(obj.user.avatar)
 
   return (
     <div>
@@ -49,7 +52,7 @@ const Auth = () => {
       {/* {session && <div>{session.user}</div>} */}
       {payload && (
         <Image
-          src={payload && payload.avatar && payload?.avatar}
+          src={obj.user.avatar}
           width={500}
           height={500}
           alt="Picture of the author"
