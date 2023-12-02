@@ -17,7 +17,7 @@ export const authOptions: NextAuthOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
-    signIn: '/',
+    signIn: 'https://testgame-nine.vercel.app/',
     signOut: '/',
   },
   // session: {
