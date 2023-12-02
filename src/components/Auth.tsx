@@ -7,7 +7,7 @@ import styles from './Auth.module.scss'
 import { useRouter } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
 const Auth = () => {
-  // const { data: session, status } = useSession()
+  const { data: session, status } = useSession()
   const router = useRouter()
 
   const searchParams = useSearchParams()
@@ -40,13 +40,13 @@ const Auth = () => {
 
   return (
     <div>
-      {/* <button onClick={() => signIn('vk')}>VK</button>
-      <button onClick={() => signOut()}>Выйти</button> */}
-      {/* {session && session.user?.name && <div>{session.user?.name}</div>} */}
+      <button onClick={() => signIn('vk')}>VK</button>
+      <button onClick={() => signOut()}>Выйти</button>
+      {session && session.user?.name && <div>{session.user?.name}</div>}
       {/* {session && <div>{session.user}</div>} */}
 
       <button className={styles.btn} onClick={redirectAuthHandler}>
-        Авторизация{' '}
+        Авторизация
       </button>
     </div>
   )
