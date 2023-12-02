@@ -10,29 +10,29 @@ export const authOptions: NextAuthOptions = {
     //   clientId: process.env.GOOGLE_CLIENT_ID as string,
     //   clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     // }),
-    VkProvider({
-      clientId: process.env.VK_CLIENT_ID as string,
-      clientSecret: process.env.VK_CLIENT_SECRET as string,
-    }),
+    // VkProvider({
+    //   clientId: process.env.VK_CLIENT_ID as string,
+    //   clientSecret: process.env.VK_CLIENT_SECRET as string,
+    // }),
   ],
-  pages: {
-    signIn: '/',
-    signOut: '/',
-  },
-  session: {
-    strategy: 'jwt',
-  },
-  callbacks: {
-    async jwt({ token, user }) {
-      return { ...token, ...user }
-    },
-    async session({ session, token, user }) {
-      console.log(user)
-      session.user = token
-      session.expires = '123'
-      return session
-    },
-  },
+  // pages: {
+  //   signIn: '/',
+  //   signOut: '/',
+  // },
+  // session: {
+  //   strategy: 'jwt',
+  // },
+  // callbacks: {
+  //   async jwt({ token, user }) {
+  //     return { ...token, ...user }
+  //   },
+  //   async session({ session, token, user }) {
+  //     console.log(user)
+  //     session.user = token
+  //     session.expires = '123'
+  //     return session
+  //   },
+  // },
 }
 
 export default NextAuth(authOptions)
