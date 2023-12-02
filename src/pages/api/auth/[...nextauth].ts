@@ -6,10 +6,10 @@ import VkProvider from 'next-auth/providers/vk'
 
 export const authOptions: NextAuthOptions = {
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-    }),
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_CLIENT_ID as string,
+    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    // }),
     VkProvider({
       clientId: process.env.VK_CLIENT_ID as string,
       clientSecret: process.env.VK_CLIENT_SECRET as string,
