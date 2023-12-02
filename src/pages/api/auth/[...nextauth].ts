@@ -13,6 +13,28 @@ export const authOptions: NextAuthOptions = {
     VkProvider({
       clientId: process.env.VK_CLIENT_ID as string,
       clientSecret: process.env.VK_CLIENT_SECRET as string,
+      async profile(profile, tokens) {
+        const userInfoResponse = await fetch(
+          `https://api.vk.com/method/users.get?fields=email,photo_max,bdate,last_name,city&access_token=${tokens.access_token}&v=5.131`
+        )
+        const userInfoData = await userInfoResponse.json()
+        const userInfo = userInfoData.response[0]
+        console.log(userInfoData)
+        // Получить дополнительные данные о пользователе VK
+        const user = {
+          id: userInfo.id,
+          name: userInfo.first_name,
+          last_name: userInfo.last_name,
+          email: userInfo.email,
+          image: userInfo.photo_max,
+          bday: userInfo.bdate,
+          city: userInfo.city,
+          // Добавить дополнительные поля
+          // ...
+        }
+
+        return user
+      },
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,

@@ -57,6 +57,8 @@ const Auth = () => {
   const obj = JSON.parse(jsonString)
   // console.log(router)
   console.log(obj)
+
+  console.log(res)
   // console.log(obj.user.avatar)
 
   return (
