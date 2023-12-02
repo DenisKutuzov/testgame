@@ -4,10 +4,15 @@ import { signIn, useSession, signOut } from 'next-auth/react'
 import React from 'react'
 import { Config, Connect } from '@vkontakte/superappkit'
 import styles from './Auth.module.scss'
-
+import { useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 const Auth = () => {
   // const { data: session, status } = useSession()
+  const router = useRouter()
 
+  const searchParams = useSearchParams()
+
+  const payload = searchParams && searchParams.get('payload')
   Config.init({
     appId: 51806222, // Тут нужно подставить ID своего приложения.
 
@@ -25,12 +30,13 @@ const Auth = () => {
     Connect.redirectAuth({
       url: 'https://testgame-nine.vercel.app/',
       state: '',
-      source: '',
+      source: 'phone_number',
       action: undefined,
       screen: undefined,
     })
 
-  // console.log(session)
+  // console.log(router)
+  console.log(payload)
 
   return (
     <div>
