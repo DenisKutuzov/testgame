@@ -9,9 +9,24 @@ import { useSearchParams } from 'next/navigation'
 
 import Image from 'next/image'
 
+interface DateWithUser {
+  user?:
+    | {
+        name?: string | null | undefined
+        email?: string | null | undefined
+        image?: string | null | undefined
+        bday?: string
+        last_name?: string
+      }
+    | undefined
+  expires?: string | undefined
+}
+
 const Auth = () => {
   const { data: session, status } = useSession()
   const router = useRouter()
+
+  const res: DateWithUser | null = session
 
   const searchParams = useSearchParams()
 
@@ -48,7 +63,9 @@ const Auth = () => {
     <div>
       <button onClick={() => signIn('vk')}>VK</button>
       <button onClick={() => signOut()}>Выйти</button>
-      { <div>{JSON.stringify(session)}</div>}
+      {<div>{JSON.stringify(session)}</div>}
+      {<div>{JSON.stringify(res)}</div>}
+
       {/* {session && <div>{session.user}</div>} */}
       {payload && (
         <Image
