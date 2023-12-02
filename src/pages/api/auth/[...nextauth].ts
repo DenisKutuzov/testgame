@@ -15,6 +15,7 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.VK_CLIENT_SECRET as string,
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: '/',
     signOut: '/',
