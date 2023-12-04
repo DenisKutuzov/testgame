@@ -1,13 +1,16 @@
 'use client'
 
 import { signIn, useSession, signOut } from 'next-auth/react'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Config, Connect } from '@vkontakte/superappkit'
 import styles from './Auth.module.scss'
 import { useRouter } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
 
 import Image from 'next/image'
+import Head from 'next/head'
+
+import { VKShareButton } from 'react-share'
 
 interface DateWithUser {
   user?:
@@ -62,9 +65,13 @@ const Auth = () => {
   // console.log(obj.user.avatar)
 
   return (
-    <div>
-      <button onClick={() => signIn('vk')}>VK</button>
-      <button onClick={() => signOut()}>Выйти</button>
+    <div className={styles.container}>
+      <button onClick={() => signIn('vk')} className={styles.btn}>
+        VK вход через oAuth 2.0
+      </button>
+      <button onClick={() => signOut()} className={styles.btn}>
+        Выйти из oAuth 2.0
+      </button>
       {<div>{JSON.stringify(session)}</div>}
       {<div>{JSON.stringify(res)}</div>}
 
@@ -78,8 +85,17 @@ const Auth = () => {
         />
       )}
       <button className={styles.btn} onClick={redirectAuthHandler}>
-        Авторизация
+        Авторизация по SDK
       </button>
+      <div>
+        <VKShareButton
+          url="https://testgame-nine.vercel.app/"
+          image="https://n1s2.hsmedia.ru/99/ad/c4/99adc4eaeefb544a5489e57646d1c32a/1200x1200_0xac120003_1253669631666266022.jpeg"
+          title="Какой то текст для поделиться"
+        >
+          <div className={styles.btnShare}>Поделиться</div>
+        </VKShareButton>
+      </div>
     </div>
   )
 }
